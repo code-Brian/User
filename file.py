@@ -64,7 +64,7 @@ class User():
             self.gold_points = self.gold_points - amount
             print(f"Not enough points to cover purchase. Initial points balance: {initial_points}. Amount requested: {amount} Please pay {new_amount} point(s) to complete your purchase")
 
-
+# first user
 brian = User("Brian","Denmark", "brian@gmail.com", 31)
 
 print(brian.display_info())
