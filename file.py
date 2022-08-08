@@ -25,6 +25,9 @@ print "User already a member", and return False. Otherwise, return True.
 Add logic in the spend points method to be sure they have enough points to spend that amount and handle appropriately. 
 '''
 
+from multiprocessing import set_forkserver_preload
+
+
 class User():
     def __init__(self, first_name, last_name, email, age):
         self.first_name = first_name
@@ -32,6 +35,7 @@ class User():
         self.email = email
         self.age = age
         self.member = False
+        self.gold_points = 0
     
     def display_info(self):
         print(self.first_name)
@@ -39,13 +43,24 @@ class User():
         print(self.email)
         print(self.age)
         print(f"is member: {self.member}")
+        print(f"gold points balance: {self.gold_points}")
     
-    def enroll(self):
+    def enroll(self): 
         if (self.member):
             print(f"{self.first_name} is already a member")
         else:
             self.member = True
             print(f"{self.first_name} is now a member. Welcome to the club! Help yourself to punch and pie.")
+            self.gold_points = 200
+            print(f"gold points balance is now: {self.gold_points}")
+    
+    def spend_points(self, amount):
+        if amount <= self.gold_points:
+            self.gold_points = self.gold_points - amount
+            print(f"New gold points balance is {self.gold_points}")
+        elif amount > self.gold_points:
+            self.gold_points = self.gold_points - amount
+            print(f"Not enough points to cover purchase. Please pay {amount} to complete your purchase")
 
 
 brian = User("Brian","Denmark", "brian@gmail.com", 31)
@@ -54,3 +69,4 @@ print(brian.display_info())
 brian.enroll()
 print(brian.display_info())
 brian.enroll()
+brian.spend_points(199)
