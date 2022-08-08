@@ -39,14 +39,18 @@ class User():
         print(self.email)
         print(self.age)
         print(f"is member: {self.member}")
-
-    def is_rewards_member(self, member):
+    
+    def enroll(self):
         if (self.member):
             print(f"{self.first_name} is already a member")
         else:
             self.member = True
             print(f"{self.first_name} is now a member. Welcome to the club! Help yourself to punch and pie.")
 
+
 brian = User("Brian","Denmark", "brian@gmail.com", 31)
 
 print(brian.display_info())
+brian.enroll()
+print(brian.display_info())
+brian.enroll()
