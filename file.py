@@ -72,3 +72,8 @@ brian.enroll()
 print(brian.display_info())
 brian.enroll()
 brian.spend_points(201)
+
+# make two more users of the User class
+morty = User("Morty", "Smith", "morty@r&m.org",14)
+
+rick = User("Rick","Sanchez", "rick@r&m.org",70)
