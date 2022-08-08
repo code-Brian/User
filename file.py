@@ -59,8 +59,10 @@ class User():
             self.gold_points = self.gold_points - amount
             print(f"New gold points balance is {self.gold_points}")
         elif amount > self.gold_points:
+            initial_points = self.gold_points
+            new_amount = amount - self.gold_points
             self.gold_points = self.gold_points - amount
-            print(f"Not enough points to cover purchase. Please pay {amount} to complete your purchase")
+            print(f"Not enough points to cover purchase. Initial points balance: {initial_points}. Amount requested: {amount} Please pay {new_amount} point(s) to complete your purchase")
 
 
 brian = User("Brian","Denmark", "brian@gmail.com", 31)
@@ -69,4 +71,4 @@ print(brian.display_info())
 brian.enroll()
 print(brian.display_info())
 brian.enroll()
-brian.spend_points(199)
+brian.spend_points(201)
