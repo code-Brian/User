@@ -62,7 +62,7 @@ class User():
             initial_points = self.gold_points
             new_amount = amount - self.gold_points
             self.gold_points = self.gold_points - amount
-            print(f"Not enough points to cover purchase. Initial points balance: {initial_points}. Amount requested: {amount} Please pay {new_amount} point(s) to complete your purchase")
+            print(f"Not enough points to cover purchase. Initial points balance: {initial_points}. Amount requested: {amount} Please pay {new_amount} point(s) to complete your purchase.")
 
 # first user
 brian = User("Brian","Denmark", "brian@gmail.com", 31)
@@ -77,3 +77,15 @@ brian.spend_points(201)
 morty = User("Morty", "Smith", "morty@r&m.org",14)
 
 rick = User("Rick","Sanchez", "rick@r&m.org",70)
+
+morty.enroll()
+morty.spend_points(80)
+
+user_list = [brian, rick, morty]
+
+for i in user_list:
+    print(i.display_info())
+
+# implement the logic to prevent over spending of points and have the third user attempt to spend 40 points
+
+rick.spend_points(40)
