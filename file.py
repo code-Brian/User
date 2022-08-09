@@ -44,6 +44,7 @@ class User():
         print(self.age)
         print(f"is member: {self.member}")
         print(f"gold points balance: {self.gold_points}")
+        return self
     
     def enroll(self): 
         if (self.member):
@@ -53,6 +54,7 @@ class User():
             print(f"{self.first_name} is now a member. Welcome to the club! Help yourself to punch and pie.")
             self.gold_points = 200
             print(f"gold points balance is now: {self.gold_points}")
+        return self
     
     def spend_points(self, amount):
         if amount <= self.gold_points:
@@ -63,28 +65,25 @@ class User():
             new_amount = amount - self.gold_points
             self.gold_points = self.gold_points - amount
             print(f"Not enough points to cover purchase. Initial points balance: {initial_points}. Amount requested: {amount} Please pay {new_amount} point(s) to complete your purchase.")
+        return self
 
 # first user
 brian = User("Brian","Denmark", "brian@gmail.com", 31)
 
-print(brian.display_info())
-brian.enroll()
-print(brian.display_info())
-brian.enroll()
-brian.spend_points(201)
+
+brian.display_info().enroll().spend_points(201)
 
 # make two more users of the User class
 morty = User("Morty", "Smith", "morty@r&m.org",14)
 
 rick = User("Rick","Sanchez", "rick@r&m.org",70)
 
-morty.enroll()
-morty.spend_points(80)
+morty.enroll().spend_points(80)
 
 user_list = [brian, rick, morty]
 
 for i in user_list:
-    print(i.display_info())
+    i.display_info()
 
 # implement the logic to prevent over spending of points and have the third user attempt to spend 40 points
 
